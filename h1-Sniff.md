@@ -31,4 +31,4 @@ Parallelsin Network asetusten Host Only sulkee virtuallikoneen pääsyn Internet
 
 Tero Karvinen. Verkkoon tunkeutuminen ja tiedustelu: https://terokarvinen.com/verkkoon-tunkeutuminen-ja-tiedustelu/
 
-[^1] Parallels. Network modes in Parallels Desktop for Mac: https://kb.parallels.com/4948/
+[^1]: Parallels. Network modes in Parallels Desktop for Mac: https://kb.parallels.com/4948/
