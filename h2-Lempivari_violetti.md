@@ -33,7 +33,7 @@ Tehtävät ovat Tero Karvisen ja Lari Iso-Anttilan opintojaksolta [Verkkoon tunk
 
 ### a) Apache log.
 
-Päätin asentee Apachen Debian 12 virtuaalikoneelle, jota olen käyttänyt aiemmin. Konella oliko jo apache2 asennettuna, mutta vain default sivulla. Päätin tehdä omat sivut (en muistanut ulkoa kaikkia komentoja, joten käytin Linux palvelimet kurrsin muistiinpanojani [^2].
+Päätin asentaa Apachen Debian 12 virtuaalikoneelle, jota olen käyttänyt aiemmin. Konella oliko jo apache2 asennettuna, mutta vain default sivulla. Päätin tehdä omat sivut (en muistanut ulkoa kaikkia komentoja, joten käytin Linux palvelimet kurssin muistiinpanojani [^2].
 
 Ensin Teron Linux palvelimet tunnilla antaman ohjeen mukaan ylikirjoitin default sivun.
 
@@ -103,7 +103,7 @@ Vaikka päivitin sivua selaimen localhost osoitteesta, niin uusia rivejä ei tul
 
 Kokeilin seuraavaksi avata sivut Macin Chromesta, mutta mitään ei tapahtunut. 
 
-Päätin kokeilla ennen enempiä analyysejä mitä miltä journalctl näyttää. Teron ohjeilla [^1] ja --follow sijaan katsoin, -f käy myös [^4]
+Päätin kokeilla ennen enempiä analyysejä, miltä journalctl näyttää. [^4]
 
 ```
 sudo journalctl -f
@@ -132,7 +132,7 @@ Analysoidaan rivi tässä välissä:
 
 - "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0" - User agent [^5]
 
-Kun mietein miksi logi ei päivity, niin aloin miettiä myös, että miksi kellonaikaki on noin kauan aikaa sitten. Mietin, että oman sivun, jonka tein tekee login johonkin muualle tai sitten ne pitää erikseen konfiguroida. Menin hieman kömpelösti sudolla katsomaan mitä log tiedostossa on:
+Kun mietein miksi logi ei päivity, niin aloin miettiä myös, että miksi kellonaikakin on noin kauan aikaa sitten. Aloin miettiä, oman sivun logi menee varmaankin johonkin muualle tai sitten se pitää erikseen konfiguroida. Menin hieman kömpelösti sudolla katsomaan mitä log hakemistossa on:
 
 ![img_4.png](img/h2-Lempivari_violetti/img_4.png)
 
@@ -491,7 +491,7 @@ Kokeilin RDS skannausta
 nmap -p 3389 --script rdp-enum-encryption localhost
 ```
 
-mutta cookieata ei tullut. Niimpä lopulta googlailun jälkeen asensin xrdp:n [^19] 
+mutta cookieta ei tullut. Arvailin, että cookies ei tule lähetetyksi, koska portissa ei ole mitään. Googlailun jälkeen asensin xrdp:n [^19] 
 
 ```
 sudo apt-get install xrdp
@@ -501,7 +501,7 @@ Nyt nmap lähetti cookien
 
 ![img_12.png](img/h2-Lempivari_violetti/img_12.png)
 
-Staakin ohjeilla [^18] etsein hakemistosta /usr/share/nmap/nselib/rdp.lua oikean kohdan:
+Staakin ohjeilla [^18] etsein /usr/share/nmap/nselib/rdp.lua oikean kohdan:
 
 ![img_13.png](img/h2-Lempivari_violetti/img_13.png)
 
