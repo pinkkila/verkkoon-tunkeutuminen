@@ -562,4 +562,4 @@ https://learning.oreilly.com/videos/the-art-of/9780135767849/9780135767849-SPTT_
 
 [^20]: David J Bianco. The Pyramid of Pain: https://detect-respond.blogspot.com/2013/03/the-pyramid-of-pain.html
 
-[¨21]: David Tidmarsh. Diamond Model of Intrusion Analysis: What, Why, and How to Learn: https://www.eccouncil.org/cybersecurity-exchange/ethical-hacking/diamond-model-intrusion-analysis/
+[^21]: David Tidmarsh. Diamond Model of Intrusion Analysis: What, Why, and How to Learn: https://www.eccouncil.org/cybersecurity-exchange/ethical-hacking/diamond-model-intrusion-analysis/
