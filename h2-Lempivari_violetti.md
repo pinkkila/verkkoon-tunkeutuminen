@@ -513,7 +513,7 @@ Muutin cookien arvon takaisin nmap, mutta error säilyi. En ole ikinä kirjoitta
 
 ![img_15.png](img/h2-Lempivari_violetti/img_15.png)
 
-Jätin cookien valueksi nap
+Vaihdoin cookien valueksi nap
 
 ![img_16.png](img/h2-Lempivari_violetti/img_16.png)
 
