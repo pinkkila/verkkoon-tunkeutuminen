@@ -79,7 +79,7 @@ echo "<h1>Pinkkila</h1>" > /home/parallels/public_sites/pinkkila.com/index.html
 
 Sivu toimi:
 
-![img.png](img.png)
+![img.png](img/h2-Lempivari_violetti/img.png)
 
 Jatkoin tekemällä sivun johon pääsee linkillä 
 
@@ -89,7 +89,7 @@ mkdir -p /home/parallels/public_sites/pinkkila.com/another
 
 Ja lisäsin hiukan html ja css.
 
-![img_1.png](img_1.png)
+![img_1.png](img/h2-Lempivari_violetti/img_1.png)
 
 Teron tehtävän sivun ohjeiden [^1] avulla tarkastelin logeja ensin tail komennolla (-F tarkoitaa follow [^3])
 
@@ -99,7 +99,7 @@ sudo tail -F /var/log/apache2/access.log
 
 Vaikka päivitin sivua selaimen localhost osoitteesta, niin uusia rivejä ei tullut. 
 
-![img_2.png](img_2.png)
+![img_2.png](img/h2-Lempivari_violetti/img_2.png)
 
 Kokeilin seuraavaksi avata sivut Macin Chromesta, mutta mitään ei tapahtunut. 
 
@@ -111,7 +111,7 @@ sudo journalctl -f
 
 Päivitin sivua molemmissa Debianin Firefoxissa ja Macin Chromessa ja mitään ei tapahtunut. 
 
-![img_3.png](img_3.png)
+![img_3.png](img/h2-Lempivari_violetti/img_3.png)
 
 
 Analysoidaan rivi tässä välissä:
@@ -134,7 +134,7 @@ Analysoidaan rivi tässä välissä:
 
 Kun mietein miksi logi ei päivity, niin aloin miettiä myös, että miksi kellonaikaki on noin kauan aikaa sitten. Mietin, että oman sivun, jonka tein tekee login johonkin muualle tai sitten ne pitää erikseen konfiguroida. Menin hieman kömpelösti sudolla katsomaan mitä log tiedostossa on:
 
-![img_4.png](img_4.png)
+![img_4.png](img/h2-Lempivari_violetti/img_4.png)
 
 Sitten testasin tuota other_vhosts_access.log ja logit kirjautuivat sinne 
 
@@ -150,7 +150,7 @@ Näitä logeja kun katsoi niin oli aika ilmestä, että ne aiemmat logit olivat 
 
 Laitoin Network moden Host Only 
 
-![img_6.png](img_6.png)
+![img_6.png](img/h2-Lempivari_violetti/img_6.png)
 
 Käytin Karvisen ojeita [^1]
 
@@ -281,7 +281,7 @@ sudo tail /var/log/apache2/other_vhosts_access.log |grep -i "nmap"
 
 Käytin filtteriä `frame contains "nmap"` [^15]
 
-![img_5.png](img_5.png)
+![img_5.png](img/h2-Lempivari_violetti/img_5.png)
 
 - Taitaa kaikissa Source Port olla 39466
 - POST / on formin lähetys [^16]
@@ -432,7 +432,7 @@ T 127.0.0.1:39398 -> 127.0.0.1:80 [AP] #97
 
 Sitten kokeilin Wireshakilla ja ei ehkä niin yllättäen sama tilanne. 
 
-![img_7.png](img_7.png)
+![img_7.png](img/h2-Lempivari_violetti/img_7.png)
 
 Apachen logeissa näytti tältä:
 
@@ -466,18 +466,18 @@ nselib/http.lua:  local URL_404_1 = '/nmaplowercheck' .. os.time(os.date('*t'))
 sudoedit /usr/share/nmap/nselib/http.lua
 ```
 
-![img_8.png](img_8.png) 
+![img_8.png](img/h2-Lempivari_violetti/img_8.png) 
 
-![img_9.png](img_9.png)
+![img_9.png](img/h2-Lempivari_violetti/img_9.png)
 
 
 Ja seuraavaksi kokeilin ngrepillä, Wiresharkilla ja katsoin logit ja kaikki olivat tyhjiä.
 
-![img_10.png](img_10.png)
+![img_10.png](img/h2-Lempivari_violetti/img_10.png)
 
 naplowercheck löytyi:
 
-![img_11.png](img_11.png)
+![img_11.png](img/h2-Lempivari_violetti/img_11.png)
 
 ---
 
@@ -499,23 +499,23 @@ sudo apt-get install xrdp
 
 Nyt nmap lähetti cookien
 
-![img_12.png](img_12.png)
+![img_12.png](img/h2-Lempivari_violetti/img_12.png)
 
 Staakin ohjeilla [^18] etsein hakemistosta /usr/share/nmap/nselib/rdp.lua oikean kohdan:
 
-![img_13.png](img_13.png)
+![img_13.png](img/h2-Lempivari_violetti/img_13.png)
 
 ja muutin nimen ja... koodi oli rikki.
 
-![img_14.png](img_14.png)
+![img_14.png](img/h2-Lempivari_violetti/img_14.png)
 
 Muutin cookien arvon takaisin nmap, mutta error säilyi. En ole ikinä kirjoittanut Luaa, enkä tunne sen syntaxia, joten avasin toisella virtuaalikoneella saman filen. Olin tehnyt typon kun etsin nanolla "nmap" (// ei kuulu tuohon)(kannataisi varmaan asentaa vs code tai jotain).
 
-![img_15.png](img_15.png)
+![img_15.png](img/h2-Lempivari_violetti/img_15.png)
 
 Jätin cookien valueksi nap
 
-![img_16.png](img_16.png)
+![img_16.png](img/h2-Lempivari_violetti/img_16.png)
 
 ---
 
