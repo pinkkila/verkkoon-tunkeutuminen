@@ -24,7 +24,7 @@ Tehtävät ovat Tero Karvisen ja Lari Iso-Anttilan opintojaksolta [Verkkoon tunk
 - Cornelius 2022: Decode 433.92 MHz weather station data [^14]
 
     - basic carrier päälle ja pois on digitaalinen muoto amplitudi modulaatiosta (AM) ja sitä kutsutaan amplitude shift key:ksi kun carrierilla voi olla vähintään yksi fixed amplitude aalto. 
-    - Bits/Symbols, joka on Corneliuksen (ja minun urh:ssa) tulisi Corneliuksen mukaan olla symbols per bit, joka on varmaankin arvo mitä Hubacek videollaan sääti.
+    - Bits/Symbols, joka on Corneliuksen (ja minun urh:ssa) tulisi Corneliuksen mukaan olla symbols per bit, joka on varmaankin arvo mitä hubmartin videollaan sääti.
 
 
 ---
@@ -161,11 +161,11 @@ Ainoastaan KlikAanKlikUit-Switch:llä on dim value ja sen on jokakerta 0.
 
 Googlaamalla löytyy, että KlikAanKlikUit-Switch tekee ainakin valojen katkaisimia. [^8]
 
---
+---
 
 ### d) Too compex 16? Olet nauhoittanut näytteen 'urh' -ohjelmalla .complex16s-muodossa. Muunna näyte rtl_433-yhteensopivaan muotoon ja analysoi se.
 
-Kokeilin ensin rtl_433 dockin [^9] lukemani perusteella seuraavaa komentoa, mutta se ei toiminut. 
+Kokeilin ensin rtl_433 dockista [^9] lukemani perusteella seuraavaa komentoa, mutta se ei toiminut. 
 
 ```bash
 ┌──(parallels㉿kali-linux-2024-2)-[~/Documents/radio]
@@ -264,8 +264,6 @@ pipx install urh
 
 Törmäsin erroriin
 
-
-
 ```bash
 ┌──(parallels㉿kali-linux-2024-2)-[~/.local/state/pipx/log]
 └─$ cat cmd_2025-04-16_00.47.52_pip_errors.log                               
@@ -327,9 +325,7 @@ note: If you believe this is a mistake, please contact your Python installation 
 hint: See PEP 668 for the detailed specification.
 ```
 
-"If you believe this is a mistake..." I believe this is a mistake... 😃 
-
-Asensin lopulta seuraavilla komennoilla:
+Jostain syystä mielenkiintoni heräsi ja menin tuolle "rikkinäiselle tielle" ja asensin lopulta seuraavilla komennoilla:
 
 ```bash
 ┌──(parallels㉿kali-linux-2024-2)-[~/Documents/UniversalRadio/urh]
@@ -362,7 +358,7 @@ Installing collected packages: urh
 Successfully installed urh-2.9.8
 ```
 
-Jos ymmärrän tästä Stack Overflow keskustelusta [^10] ja tästä videosta [^11] oikein, niin nyt minulla on hyvin todennäköisesti jotenkin sekaisin apt-get paketinhallinta ja pythonin paketinhallinta (niin, että molemmat asentavat paketteja samaan ympäristöön [^12]). Myös Kalin omassa dokumentaatiossa on tästä pipx:stä [^12]. Tein jotain varmaan väärässä järjestyksessä tai jotain. 
+Jos ymmärrän tästä Stack Overflow keskustelusta [^10], tästä videosta [^11] ja Kalin dokumentaatiosta [^12] oikein, niin nyt minulla on hyvin todennäköisesti sekaisin apt-get paketinhallinta ja pythonin paketinhallinta niin, että molemmat ilmeisesti asentavat python paketteja samaan ympäristöön. Kalin dokumentaation mukaan "it can quickly become a broken mess" [^12].
 
 Seuraavaksi ajoin urh komennon ja urh ohjelman graaffinen käyttöliittymä aukesi.
 
@@ -413,27 +409,27 @@ Eivät ole samanlaiset. Mittaus ei myöskään vastaa hubmartin videon tilannett
 
 ### g) Bittistä. Demoduloi signaali niin, että saat raakabittejä. Mikä on oikea modulaatio? Miten pitkä yksi raakabitti on ajassa? Kuvaile tätä aikaa vertaamalla sitä johonkin. (Monissa singaaleissa on line encoding, eli lopullisia bittejä varten näitä "raakabittejä" on vielä käsiteltävä)
 
-Kun katson hubmartinin videota [^13] niin omani tilanteeni ei vastaa ollenkaan sitä mitä hänellä:
+Kun katson taas uudelleen hubmartinin videota [^13] niin omani tilanteeni ei vastaa ollenkaan sitä mitä hänellä:
 
 ![img_3.png](img/h3-aaltoja-harjaamassa/img_3.png)
 
-Luettuani urh:n manuaalia [^15] ja verrattuani hubmartinin videota, aloin miettiä, että olen tehnyt jotain varmaan väärin, koska ymmärtääkseni tuon autodetectionin pitäisi jossain määrin löytää nuo arvot, mutta itsellän ne eivät olleet lähelläkään ja katsoin mitä Nurminen [^16] oli tässä tehnyt. Nurmisella näytti arvot menevän Autodetectillä vastaavasti kuin hubmartinilla. Miksiköhän minulla ei mene 🤔
+Luettuani urh:n manuaalia [^15] ja verrattuani hubmartinin videota, aloin miettiä, että olen tehnyt jotain varmaan väärin, koska ymmärtääkseni tuon autodetectionin pitäisi jossain määrin löytää nuo arvot, mutta itsellän ne eivät olleet lähelläkään ja katsoin, mitä Nurminen [^16] oli tässä tehnyt. Nurmisella näytti arvot menevän Autodetectillä ikään kuin "järjestykseen" samalla tavalla kuin hubmartinilla. Miksiköhän minulla ei mene 🤔
 
-Vaihdoin vasemmalla olevan valikon arvot samaan kuin Nurmisella, mutta lukemat eivät siltikään ymmärtääkseni olleet oikein ja joissain kohdissa, missä pitäisi ymmärtääkseni olla 0 oli 1 (korjaamiseksi olen nostanut noisea ja tarkentanut pituutta):
+Vaihdoin vasemmalla olevan valikon arvot samaan kuin Nurmisella, mutta lukemat eivät siltikään ymmärtääkseni olleet oikein ja joissain kohdissa, missä pitäisi olla 0, oli 1 (korjaamiseksi olen nostanut noisea ja tarkentanut pituutta):
 
 ![img_4.png](img/h3-aaltoja-harjaamassa/img_4.png)
 
-En tiedä. Palasin myös siihen miksiköhän tuo pipx asentaminen ei onnistunut. Kokeilin asentee urh:n pipx:llä myös Debianilla ja silläkään ei asennus onnistunut kuten Teron ohjeissa [^1] ja kuten Nurmisella oli toiminut [^16]. Kokeilen vielä UTM:n Kalilla, mitä tapahtuu ja sama ongelma. Samoin kävi myös Ubuntulla, joka pyörii rosetalla. Googlailin tätä jonkinaikaa ja ongelma on varmaan joku suht helppo ja perus Python ympäristö asia, mutta koska olen täysin kokomaton pythonin kanssa, niin en osaa sitä tässä nyt ratkaista. 
+Palasin myös siihen miksiköhän tuo pipx asentaminen ei onnistunut. Kokeilin asentee urh:n pipx:llä Parallelsilla olevaan Debianiin ja silläkään ei asennus onnistunut kuten Teron ohjeissa [^1] ja kuten Nurmisella oli toiminut [^16]. Kokeilen vielä UTM:n Kalilla mitä tapahtuu ja sama ongelma. Samoin kävi myös Ubuntulla (parallels), joka pyörii rosetalla. Googlailin tätä jonkinaikaa ja ongelma on varmaan joku suht helppo ja perus Python ympäristö asia, mutta koska olen täysin kokomaton pythonin kanssa, niin en osaa sitä tässä nyt ratkaista. 
 
 Vika voi olla myös täysin siinä, että olen urh:ia säätäessäni tehnyt jonkun virheen. 
 
-Myös hubmartinin [^13] ja Nurmisen [^16] tekemä signal viewin demodulated valinnassa näyttää täysin erilaiselta kuin minun (mikä on ilmeistäkin, koska ykköset ja nollat on väärin):
+Myös hubmartinin [^13] ja Nurmisen [^16] tekemä signal viewi demodulated valinnassa näyttää täysin erilaiselta kuin minun (mikä on varmaankin ilmeistäkin, koska ykköset ja nollat on väärin):
 
 ![img_5.png](img/h3-aaltoja-harjaamassa/img_5.png)
 
 ![img_6.png](img/h3-aaltoja-harjaamassa/img_6.png)
 
-
+Nurmisen tehtävästä selviää, että modulaatio oli ASK ja yhden raakabitin aika 522 mikrosekuntia [^16]. Yksi mikrosekunti on yksi miljoonasosa sekunnista [^17].
 
 ---
 
@@ -470,3 +466,5 @@ Myös hubmartinin [^13] ja Nurmisen [^16] tekemä signal viewin demodulated vali
 [^15]: urh. userguide: https://www.oldergeeks.com/downloads/files/userguide.pdf
 
 [^16]: nurminenkasper. h3 Aaltoja Harjaamassa: https://github.com/nurminenkasper/Verkkoon-tunkeutuminen-ja-tiedustelu/blob/main/h3/h3-Aaltoja-harjaamassa.md
+
+[^17]: Wikipedia. Microsecond: https://en.wikipedia.org/wiki/Microsecond
