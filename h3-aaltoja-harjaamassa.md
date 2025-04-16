@@ -262,7 +262,31 @@ sudo apt-get -y install pipx
 pipx install urh
 ```
 
-Törmäsin erroriin
+Törmäsin erroriin: 
+
+(selvennykseksi lisätty palautuksen jälkeen: 
+
+error tuli/tulee ajettaessa komentoa `pipx install urh` ja ensimmäinen error viesti on:
+
+```bash
+parallels@debian-gnu-linux-12-6:~$ pipx install url
+Fatal error from pip prevented installation. Full pip output in file:
+    /home/parallels/.local/pipx/logs/cmd_2025-04-17_00.27.57_pip_errors.log
+
+pip failed to build package:
+    url
+
+Some possibly relevant errors from pip install:
+    error: subprocess-exited-with-error
+    url/url-cpp/include/punycode.h:56:54: error: ‘numeric_limits’ is not a member of ‘std’
+    url/url-cpp/include/punycode.h:56:82: error: expected primary-expression before ‘>’ token
+    url/url-cpp/include/punycode.h:56:85: error: ‘::max’ has not been declared; did you mean ‘std::max’?
+    error: command '/usr/bin/aarch64-linux-gnu-g++' failed with exit code 1
+    ERROR: Failed to build installable wheels for some pyproject.toml based projects (url)
+
+Error installing url.
+```
+lisäys päättyy.) 
 
 ```bash
 ┌──(parallels㉿kali-linux-2024-2)-[~/.local/state/pipx/log]
