@@ -30,7 +30,7 @@ APDU luokan metodeita:
 
 ### 3. Tutki ja kerro minkä mielenkiintoisen RFID hakkerointi uutiset löysit. (Vinkki, useimmat liittyvät henkilökortteihin)
 
-https://www.wired.com/story/saflok-hotel-lock-unsaflok-hack-technique/ [7]
+https://www.wired.com/story/saflok-hotel-lock-unsaflok-hack-technique/ [^7]
 
 Tietoturvatutkijat löysivät haavoittuvuuden RFID-avainkorteilla toimivista lukoista. Hakkerointi mahdollisti lukkojen avaamisen kahdella teetetyllä kortilla muutamassa sekunnissa. Kyseisiä lukkoja oli/on käytössä 3 miljoonassa ovessa 131 eri maassa. 
 
