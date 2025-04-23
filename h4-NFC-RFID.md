@@ -30,7 +30,7 @@ APDU luokan metodeita:
 
 ### 3. Tutki ja kerro minkä mielenkiintoisen RFID hakkerointi uutiset löysit. (Vinkki, useimmat liittyvät henkilökortteihin)
 
-https://www.wired.com/story/saflok-hotel-lock-unsaflok-hack-technique/
+https://www.wired.com/story/saflok-hotel-lock-unsaflok-hack-technique/ [7]
 
 Tietoturvatutkijat löysivät haavoittuvuuden RFID:llä avainkorteilla toimivista lukoista. Hakkerointi mahdollisti lukkojen avaamisen kahdella teetetyllä kortilla muutamassa sekunnissa. Kyseisiä lukkoja oli/on käytössä 3 miljoonassa ovessa 131 eri maassa. 
 
@@ -53,3 +53,5 @@ Haavoittuvuuden aiheuttaa valmistajan (Dormakaba) huono enkryptaus ja systeemin 
 [^5]: Wikipedia. RFID-skimmaus: https://fi.wikipedia.org/wiki/RFID-skimmaus
 
 [^6]: Oracle. Package javacard.framework: https://docs.oracle.com/en/java/javacard/3.1/jc_api_srvc/api_classic/javacard/framework/package-summary.html 
+
+[^7]: Andy Greenberg. Hackers Found a Way to Open Any of 3 Million Hotel Keycard Locks in Seconds: https://www.wired.com/story/saflok-hotel-lock-unsaflok-hack-technique/
