@@ -22,7 +22,7 @@ Tämän jäkeen asentaminen UTM:llä voi tehdä vastaavasti kuin olin aiemmin as
 
 Tunnilla ohjeistettiin kopioimaan Mininet virtuaalikoneelle oikeat tehtävät ja luettuna README.md tehtävistä koitin ajaa seuraava python komentoa, josta tuli seuraavaa: 
 
-![img_2.png](img_2.png)
+![img_2.png](img/h5-lab/img_2.png)
 
 Ohjeena myöhemmin tullut `/.get_xauth.sh` ei muuttanut ongelmaani, joka oli virheilmoitus 'Error: Cannot connect to display'. Tunnilla Iso-Anttilalla oli Macilla ohjelma XQuarzt [^5] ja myös Henry neuvoi tunnilla minua asentamaan sen, joten asensin sen tässä vaiheessa. Ohjelman asentaminen ei kuitenkaan ratkaissut ongelmaa ja sama error säilyi.
 
@@ -34,11 +34,11 @@ ssh -Y -p 8022 mininet@127.0.0.1
 
 Ongelma ei vieläkään postinut, mutta tämän Stack Overflow keskustelun [^9] perusteella oletin, että komennon `echo $DISPLAY` pitäisi palauttaa jotain. Itselläni se ei palauttanut mitään. Tässä välissä löysin tämän keskustelun [^10] ja sen perusteella muutin `/etc/ssh/sshd_config` seuraavasti (jälkikäteen ajateltuna varmaan turhaa, koska tuo `/.get_xauth.sh` olis ehkä tehnyt saman, toki en ole varma tuosta localhostista 🤔):
 
-![img.png](img.png)
+![img.png](img/h5-lab/img.png)
 
 Kokeilin kaissa väleissä tuota `echo $DISPLAY`, mutta se säilyi edelleen tyhjänä. Jossain välissä olin vaihtanut XQuartz:n asetuksista 'Allow connection from network clients' ja mietin, että tarvisiko sen tai jonkun muun aktivoituminen jonkinlaisen uudelleenkäynnistyksen ja koska en keksinyt mitään muutakaan päätin käynnistää koneen uudelleen (kuvassa muutettu asetus). 
 
-![img_3.png](img_3.png)
+![img_3.png](img/h5-lab/img_3.png)
 
 Se auttoi ja seuraavaksi kun ajoin `echo $DISPLAY` sain vastaukseksi:
 
@@ -49,7 +49,7 @@ localhost:10.0
 
 Seuraaksi menin kokeilemaan `~/lab/Network-Security-Lab/scripts$ sudo python hub_topo.py` ja sain uuden virheilmoituksen:
 
-![img_1.png](img_1.png)
+![img_1.png](img/h5-lab/img_1.png)
 
 Sitten ajoin Iso-Anttilan ohjeella [^11] komennot:
 
@@ -85,7 +85,7 @@ mininet> xterm h1
 mininet>
 ```
 
-![img_4.png](img_4.png)
+![img_4.png](img/h5-lab/img_4.png)
 
 
 ## Varsinainen tehtävät 
@@ -101,38 +101,38 @@ mininet> xterm h1
 mininet> xterm h2
 ```
 
-![img_5.png](img_5.png)
+![img_5.png](img/h5-lab/img_5.png)
 
 Annoin ohjeen [^13] mukaisen komennon `python sniff_icmp.py` h1:ssä ja komento jää odottamaan. Kun teen  h2:ssa `ping 10.0.0.1` tapahtuu seuraavaa: 
 
-![img_6.png](img_6.png)
+![img_6.png](img/h5-lab/img_6.png)
 
 10.0.0.1 on h1:sen ip-osoite mininetissä ja 10.0.0.2 on h2:sen. Python scripti mahdollistaa ICMP pakettin kaappaamisen [^13]. ICMP (Internet Control Message Protocol) on TCP/IP pinon kontrolliprotokolla, joka lähettää kommunikoinnin onnistunut tai epäonnistunut viestejä [^14].
 
 Kokeillaan seuraavaksi spoofing scriptiä.
 
-![img_7.png](img_7.png)
+![img_7.png](img/h5-lab/img_7.png)
 
 Näkyy Host 2 samanlaisena kuin aiemmin. Tämä varmastikin demonstroi sitä, että jos scriptiä muuttaisi saisi pyynnön tekijälle lähteviä vastauksia muutettua.
 
 ##### Task 2: MITM Attack Using ARP Cache Poisoning
 
-![img_8.png](img_8.png)
+![img_8.png](img/h5-lab/img_8.png)
 
 En aluksi ihan ymmärtänyt mitä tapahtuu, mutta olin tästä videosta [^15], että näissä Nodeissa on wireshark ja koitin avata sitä samaan aikaan kun arp-cache poisoning on käynissä ja en onnistunut, mutta huomasin, että wiresharkissa oli valmiina .pcapng tiedosto nimellä 'arp.poison', joten scripti tallensi kaiken automaattisesti. Kuten kuvasta näkyy h3 näkee suoraan ARP pyynnöt h1 ja h2 välillä.
 
-![img_9.png](img_9.png)
+![img_9.png](img/h5-lab/img_9.png)
 
 
 ##### Task 3: TCP Session Hijacking
 
 Kaappaus tulostuu terminaaliin.
 
-![img_10.png](img_10.png)
+![img_10.png](img/h5-lab/img_10.png)
 
 En ole ihan varma meneekö tämä ihan oikein, koska kuuntelevaan tcp-serveriin eli h1:seen ei tule ilmoitusta saapuneesta h3:sen lähettämästä tekaistusta paketista 🤔 
 
-![img_11.png](img_11.png)
+![img_11.png](img/h5-lab/img_11.png)
 
 ---
 
@@ -407,13 +407,13 @@ mininet> xterm h2
 mininet>
 ```
 
-![img_12.png](img_12.png)
+![img_12.png](img/h5-lab/img_12.png)
 
 SYN flood hyökkäyksessä hyökkääjä lähettää suuren määrän SYN paketteja kohde serverilla. Kohde serveri vastaa näihin ja jättää avoimen portin valmiiksi odottamaan vastausta, jota hyökkääjä ei tule koskaan lähettämään (viimeistä tcp handshaken ACK pakettia ei siis koskaan tule). Pyyntöjä läheteään lisää ja lisää kunnes serverin normaali toiminta estyy. [^22]  
 
-Katsoin Enat:n tekemän videon [^23] ja siitä pystyi helposti näkemään, että hyökkäyksen voi tehdä ohjelmalla hping3. Ojelma oli valmiiksi asennettuna mininetin nodeille, joten käynnistin sen vain videon komennolla h2 sen Wiresharkista näki hyökkäyksen toteutumisen.  
+Katsoin Enat:n tekemän videon [^23] ja siitä pystyi helposti näkemään, että hyökkäyksen voi tehdä ohjelmalla hping3. Ojelma oli valmiiksi asennettuna mininetin nodeille, joten käynnistin sen vain videon komennolla ja h2:n Wiresharkista näki hyökkäyksen toteutumisen.  
 
-![img_13.png](img_13.png)
+![img_13.png](img/h5-lab/img_13.png)
 
 
 ---
