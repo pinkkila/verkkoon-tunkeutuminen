@@ -206,13 +206,6 @@ En ymmärtänyt ihan täysin miten tätä olisi voinut tarkastella tarkemmin.
 
 ---
 
-### Network-Security-Lab (General) https://github.com/karthik2522/Network-Security-Lab [^18]
-
-
-
----
-
-
 ### a) Tutustu seuraavaan työkaluun https://github.com/kgretzky/evilginx2 [^19]
 
 - Asensitko työkalun, jos asensit niin kirjoita miten sen teit.
@@ -380,6 +373,47 @@ En valitettavasti.
 
 ---
 
+## 2. Sinulla on käytössäsi mininet ympäristö. Luo ympäristö, jossa voit tehdä TCP SYN-Flood hyökkäyksen. Kirjoita miten loit mininet ympäristön ja miten toteutit hyökkäyksen.
+
+Käytin samaa mininet virtuaalikonetta kuin tämän raportin kohdassa 'mininet'. 
+
+Loin ympäritön komennolla [^6]
+
+```
+sudo -E mn --topo minimal
+```
+
+Ja avasin h1 ja h2 omiin terminaaleihinsa. 
+
+```bash
+mininet@mininet-vm:~$ sudo -E mn --topo minimal
+*** Creating network
+*** Adding controller
+*** Adding hosts:
+h1 h2
+*** Adding switches:
+s1
+*** Adding links:
+(h1, s1) (h2, s1)
+*** Configuring hosts
+h1 h2
+*** Starting controller
+c0
+*** Starting 1 switches
+s1 ...
+*** Starting CLI:
+mininet> xterm h1
+mininet> xterm h2
+mininet>
+```
+
+![img_12.png](img_12.png)
+
+SYN flood hyökkäyksessä hyökkääjä lähettää suuren määrän SYN paketteja kohde serverilla. Kohde serveri vastaa näihin ja jättää avoimen portin valmiiksi odottamaan vastausta, jota hyökkääjä ei tule koskaan lähettämään (viimeistä tcp handshaken ACK pakettia ei siis koskaan tule). Pyyntöjä läheteään lisää ja lisää kunnes serverin normaali toiminta estyy. [^22]  
+
+Katsoin Enat:n tekemän videon [^23] ja siitä pystyi helposti näkemään, että hyökkäyksen voi tehdä ohjelmalla hping3. Ojelma oli valmiiksi asennettuna mininetin nodeille, joten käynnistin sen vain videon komennolla h2 sen Wiresharkista näki hyökkäyksen toteutumisen.  
+
+![img_13.png](img_13.png)
 
 
 ---
@@ -427,3 +461,7 @@ En valitettavasti.
 [^20]: Clint & Si. GitHub Phishing Attack: Evilginx2 MFA Bypass Explained | 2024: https://www.youtube.com/watch?v=e7SebbYUS2w
 
 [^21]: OpenAI. ChatGPT: Version 1.2025.112, Model GPT‑4o
+
+[^22]: Cloudflare. How does a SYN flood attack work?: https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack/
+
+[^23]: Enat. Performing a TCP SYN Flood Attack: https://www.youtube.com/watch?v=qSqa3s2mank
