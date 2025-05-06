@@ -88,7 +88,7 @@ mininet>
 ![img_4.png](img/h5-lab/img_4.png)
 
 
-## Varsinainen tehtävät 
+## Varsinaiset tehtävät 
 
 ### Network-Security-Lab (mininet) https://github.com/ssam246/Network-Security-Lab [^13]
 
@@ -206,7 +206,7 @@ En ymmärtänyt ihan täysin miten tätä olisi voinut tarkastella tarkemmin.
 
 ---
 
-### a) Tutustu seuraavaan työkaluun https://github.com/kgretzky/evilginx2 [^19]
+### 1) Tutustu seuraavaan työkaluun https://github.com/kgretzky/evilginx2 [^19]
 
 - Asensitko työkalun, jos asensit niin kirjoita miten sen teit.
 
