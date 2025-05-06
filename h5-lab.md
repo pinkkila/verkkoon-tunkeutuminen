@@ -377,7 +377,7 @@ En valitettavasti.
 
 Käytin samaa mininet virtuaalikonetta kuin tämän raportin kohdassa 'mininet'. 
 
-Loin ympäritön komennolla [^6]
+Loin ympäristön komennolla [^6]
 
 ```
 sudo -E mn --topo minimal
