@@ -63,7 +63,7 @@ Laitoin myös mininet virtuaalikoneen `/etc/ssh/sshd_config` tiedostosta nämä 
 
 ![img.png](../img/h5-lab/img.png)
 
-Ajoi Iso-Anttilan ohjeesta [^3] seuraavat komennot:
+Ajoin Iso-Anttilan ohjeesta [^3] seuraavat komennot:
 
 ```bash
 ./get_xauth.sh #skripti Mininet vm:n kotihakemistossa
