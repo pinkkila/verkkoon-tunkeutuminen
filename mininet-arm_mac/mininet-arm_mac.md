@@ -1,4 +1,4 @@
-## Mininetin asennus ARM Mac
+# Mininetin asennus ARM Mac
 
 Itse sain mininetin tällä toimimaan, mutta muulla tavoin ohjeen toimivuudesta ei ole mitään takuita. 
 
