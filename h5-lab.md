@@ -26,7 +26,7 @@ Tunnilla ohjeistettiin kopioimaan Mininet virtuaalikoneelle oikeat tehtävät ja
 
 Ohjeena myöhemmin tullut `/.get_xauth.sh` ei muuttanut ongelmaani, joka oli virheilmoitus 'Error: Cannot connect to display'. Tunnilla Iso-Anttilalla oli Macilla ohjelma XQuarzt [^5] ja myös Henry neuvoi tunnilla minua asentamaan sen, joten asensin sen tässä vaiheessa. Ohjelman asentaminen ei kuitenkaan ratkaissut ongelmaa ja sama error säilyi.
 
-Koska setuppini Macilla on poikkeava ei Mac käyttäjien setupista aloin etsiä ohjeita netistä. Tämän ohjeen avulla [^6] (sisältää linkin myös [^7]) muutin UTM:n network asetuksia tekemään port forwardin portista 8022 portiin 22. Myös Mininetin oman dokumentaation [^12] Qemulla, jota UTM käyttää pitäisi tehdä forwardin. Luettuani myös Minintin GitHub sivua [^8] päätin alkaa kokeilla kirjatumista mininet virtuaalikoneelle komennolla: 
+Koska setuppini Macilla on poikkeava ei Mac käyttäjien setupista aloin etsiä ohjeita netistä. Tämän ohjeen avulla [^6] (sisältää linkin myös [^7]) muutin UTM:n network asetuksia tekemään port forwardin portista 8022 portiin 22. Myös Mininetin oman dokumentaation [^12] mukaan Qemulla (jota UTM käyttää) pitäisi tehdä forward. Luettuani myös Minintin GitHub sivua [^8] päätin alkaa kokeilla kirjatumista mininet virtuaalikoneelle komennolla: 
 
 ```
 ssh -Y -p 8022 mininet@127.0.0.1
