@@ -32,7 +32,7 @@ brew install --cask xquartz
 
 Jotta sain itse mininetin toimimaan tein seuraavaa:
 
-Muutin UTM:n network asetuksista:
+Muutin Network asetuksista:
 
 ![img.png](img.png)
 
@@ -42,7 +42,7 @@ Ja XQuartz asetuksista:
 
 ![img_3.png](../img/h5-lab/img_3.png)
 
-Muista jättää XQuartz päälle. 
+Muista jättää tai laittaa XQuartz päälle. 
 
 Mininettiin kirjautuminen komennolla:
 
@@ -50,7 +50,7 @@ Mininettiin kirjautuminen komennolla:
 ssh -Y -p 8022 mininet@127.0.0.1
 ```
 
-Komennon `ehco $DISPLAY` pitäisi antaa suurinpiirtein tälläistä:
+Komennon `ehco $DISPLAY` pitäisi antaa suurinpiirtein tälläistä [^4]:
 
 ```bash
 mininet@mininet-vm:~$ echo $DISPLAY
@@ -59,11 +59,11 @@ localhost:10.0
 
 Itselläni komento ei antanut aluksi mitään, mutta kun käynnistin koneen uudelleen, tulostui yllä oleva `localhost:10.0` terminaaliin. En tiedä johtuuko siitä, että tuon XQuartz:n asetusten muutokset ei aktivoitunut ilman uudelleenkäynnistämistä?
 
-Muutin myös mininet virtuaalikoneen `/etc/ssh/sshd_config` tiedostosta nämä rivit:
+Laitoin myös mininet virtuaalikoneen `/etc/ssh/sshd_config` tiedostosta nämä rivit seuraavasti:
 
 ![img.png](../img/h5-lab/img.png)
 
-Ajoi Iso-Anttilan oheesta [^3] seuraavat komennot:
+Ajoi Iso-Anttilan ohjeesta [^3] seuraavat komennot:
 
 ```bash
 ./get_xauth.sh #skripti Mininet vm:n kotihakemistossa
@@ -73,7 +73,7 @@ Ajoi Iso-Anttilan oheesta [^3] seuraavat komennot:
 sudo -s xauth add mininet-vm/unix:10  MIT-MAGIC-COOKIE-1  d52b161e307d1c34bcbd8decb60fb95a #aiemman  komennon tuloste
 ```
 
-Tässä selkeyden vuoksi koko sarja ja nyt XQuarzt avasi uuden terminaali-ikkunan.
+Tässä selkeyden vuoksi koko sarja ja nyt XQuartz avasi uuden terminaali-ikkunan.
 
 ```bash
 mininet@mininet-vm:~$ ./get_xauth.sh
@@ -97,9 +97,6 @@ mininet> xterm h1
 mininet>
 ```
 
-
-
-
 ---
 
 ### Lähteet
@@ -109,3 +106,24 @@ mininet>
 [^2]: Cybercat Labs. How to install Metasploitable on a Macbook with an M1 Chip: https://www.youtube.com/watch?v=E3IJ_d3rAgA
 
 [^3]: Lari Iso-Anttila: https://hhmoodle.haaga-helia.fi/pluginfile.php/4252431/mod_resource/content/1/03-mininet.pdf
+
+[^4]: Stack Overflow. xterm not working in mininet: https://stackoverflow.com/questions/38040156/xterm-not-working-in-mininet
+
+
+### Selvittäessäni mininetin toimintaa käytin myös näitä lähteitä:
+
+XQuarzt. https://www.xquartz.org
+
+To Kin Hang.
+How to open xterm for mininet on MacOS: https://im424.medium.com/how-to-open-xterm-for-mininet-on-macos-aae87218cdd9
+
+Tharun Shiv.
+Easy way to SSH into VirtualBox machine | Any OS:
+https://dev.to/developertharun/easy-way-to-ssh-into-virtualbox-machine-any-os-just-x-steps-5d9i?source=post_page-----aae87218cdd9---------------------------------------
+
+mininet: https://github.com/mininet/mininet/wiki/FAQ#x11-forwarding
+
+Stack Exchange. annoying message "X11 connection rejected because of wrong authentication" while there is no problem at all: https://unix.stackexchange.com/questions/162979/annoying-message-x11-connection-rejected-because-of-wrong-authentication-while
+
+mininet. Mininet VM Setup Notes: https://mininet.org/vm-setup-notes/
+
