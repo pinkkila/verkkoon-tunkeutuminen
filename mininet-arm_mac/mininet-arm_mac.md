@@ -1,23 +1,34 @@
 ## Mininetin asennus ARM Mac
 
-Tarvitaan UTM, qemu ja XQuarzt.
+Itse sain mininetin tällä toimimaan, mutta muulla tavoin ohjeen toimivuudesta ei ole mitään takuita. 
 
-UTM voi asentaa https://mac.getutm.app [^1]
+### Alkuvalmisteluina tarvitaan
 
-qemu:n voi asentaa Homebrew:llä:
+**UTM**
+
+- https://mac.getutm.app [^1]
+
+**QEMU**
 
 ```
 brew install qemu
 ```
 
-XQuarzt voi asentaa Homebrew:llä:
+**XQuarzt** 
 
 ```
 brew install --cask xquartz
 ```
 
+<br>
 
-Virtuaalikoneen asentamisen voi tehdä samoin kuten tällä videolla: https://www.youtube.com/watch?v=E3IJ_d3rAgA [^2].
+**Virtuaalikoneen asennus UTM:llä**
+
+- Virtuaalikoneen asentamisen voi tehdä samoin kuten tällä videolla: https://www.youtube.com/watch?v=E3IJ_d3rAgA [^2].
+
+---
+
+### Mininetin konfigurutointi
 
 Jotta sain itse mininetin toimimaan tein seuraavaa:
 
