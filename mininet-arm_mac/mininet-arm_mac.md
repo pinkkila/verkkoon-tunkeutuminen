@@ -99,19 +99,7 @@ mininet>
 
 ---
 
-### Lähteet
-
-[^1]: UTM: https://mac.getutm.app
-
-[^2]: Cybercat Labs. How to install Metasploitable on a Macbook with an M1 Chip: https://www.youtube.com/watch?v=E3IJ_d3rAgA
-
-[^3]: Lari Iso-Anttila: https://hhmoodle.haaga-helia.fi/pluginfile.php/4252431/mod_resource/content/1/03-mininet.pdf
-
-[^4]: Stack Overflow. xterm not working in mininet: https://stackoverflow.com/questions/38040156/xterm-not-working-in-mininet
-
----
-
-### Selvittäessäni mininetin toimintaa käytin myös näitä lähteitä:
+#### Selvittäessäni mininetin toimintaa käytin näitä lähteitä:
 
 XQuarzt. https://www.xquartz.org
 
@@ -127,4 +115,20 @@ mininet: https://github.com/mininet/mininet/wiki/FAQ#x11-forwarding
 Stack Exchange. annoying message "X11 connection rejected because of wrong authentication" while there is no problem at all: https://unix.stackexchange.com/questions/162979/annoying-message-x11-connection-rejected-because-of-wrong-authentication-while
 
 mininet. Mininet VM Setup Notes: https://mininet.org/vm-setup-notes/
+
+---
+
+### Lähteet
+
+[^1]: UTM: https://mac.getutm.app
+
+[^2]: Cybercat Labs. How to install Metasploitable on a Macbook with an M1 Chip: https://www.youtube.com/watch?v=E3IJ_d3rAgA
+
+[^3]: Lari Iso-Anttila: https://hhmoodle.haaga-helia.fi/pluginfile.php/4252431/mod_resource/content/1/03-mininet.pdf
+
+[^4]: Stack Overflow. xterm not working in mininet: https://stackoverflow.com/questions/38040156/xterm-not-working-in-mininet
+
+
+
+
 
