@@ -70,7 +70,9 @@ sudo airodump-ng wlan0mon -w ~/wifi/scanc11 --manufacturer --wps -c11
 
 #### c) Miten suhtautumisesi WLanin turvallisuuteen muuttui sen jälkeen kun teit harjoitukset?
 
-Se mitä en ollut tullut tavallaan ajatelleeksi, vaikkakin asia on itsestään selvä, niin WLan tarjoaa jo puhtaasi luonteensa takia pinta-alaa erilaisille tiedusteluille ja hyökkäyksille. Tunnilla käyty tilanne, jossa WiFi:ssä olleet laitteet saatiin pakotettua irtautumaan verkosta ja yhdistymään siihen uudelleen tuntuu edelleen hurjalta.
+Se mitä en ollut tullut tavallaan ajatelleeksi, vaikkakin asia on itsestään selvä, niin WLan tarjoaa jo puhtaasi luonteensa takia pinta-alaa erilaisille tiedusteluille ja hyökkäyksille. Tunnilla käyty tilanne, jossa WiFi:ssä olleet laitteet saatiin pakotettua irtautumaan verkosta ja yhdistymään siihen uudelleen tuntuu edelleen hurjalta. 
+
+Ja ylipäätään, jos miettiin niin airodump-ng kaltaiset työkalut mahdollistaa sen, että on mahdollista tiedustella mitä tahansa kuuloetäisyydellä olevaa langatonta verkko ja **kaikkia** siihen yhdistettyjä laitteita. Ja sitä myötä koko sen verkon tietoturva on sen varassa, mikä on sen verkon heikon lenkki, mukaan lukien siis jokainen laite, joka siihen verkkoon on kytketty. Tavallaan itsestään selvää, mutta en ehkä ole ennen tätä tullut täysin ajatelleeksi. 
 
 Olen jo tähän asti käyttänyt reitittimessä ja WiFi:eissäni hyviä salasanoja ja näin tulen tekemään myös jatkossa. En juurikaan omista IoT-laitteita, ja nekin joita minulla on, olen aina kytkenyt parempaa suorituskykyä hakiessani johdolla. Jos jatkossa kytken jotain laitteita WiFiin, tulen tekemään sille oman verkon. En usko, että tulisin ainakaan ilman todella kattavaa selvitystä, kytkemään mitään kameraa langattomasti verkkoon. Lähtökohtaisesti en ostaisi sellasita kameraa, jota ei saa langallisesti verkkoon. 
 
