@@ -1,6 +1,6 @@
 # Verkkoon tunkeutuminen ja tiedustelu (Network Attacks and Reconnaissance) Homework Reports
 
-Homework reports for [Verkkoon tunkeutuminen ja tiedustelu (Network Attacks and Reconnaissance)](https://terokarvinen.com/verkkoon-tunkeutuminen-ja-tiedustelu/) taught by Tero Karvinen and Lari Iso-Anttila.
+Homework reports for the [Verkkoon tunkeutuminen ja tiedustelu (Network Attacks and Reconnaissance)](https://terokarvinen.com/verkkoon-tunkeutuminen-ja-tiedustelu/) taught by Tero Karvinen and Lari Iso-Anttila.
 
 **In this course:**
 - Studied the Internet protocol suite (TCP/IP stack)
