@@ -7,6 +7,11 @@ Homework reports for the [Verkkoon tunkeutuminen ja tiedustelu (Network Attacks 
 - Performed packet capture and network traffic analysis
 - Studied man-in-the-middle and credential-harvesting techniques
 - Attacked emulated networks
+  - ICMP Spoofing
+  - MITM Attack via ARP Cache Poisoning
+  - TCP Session Hijacking
+  - TCP SYN-Flood Attacks
+  - DDoS Attacks
 - Explored radio-frequency analysis and software-defined radio (SDR)
 - Investigated NFC/RFID attacks
 
